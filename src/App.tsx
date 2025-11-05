@@ -47,6 +47,7 @@ import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import { CoffesPage } from './pages/coffes/page';
 
 setupIonicReact();
 
@@ -64,8 +65,8 @@ const App: React.FC = () => (
           <Route path="/tab3">
             <Tab3 />
           </Route>
-          <Route exact path="/">
-            <Redirect to="/tab1" />
+          <Route path="/coffes">
+            <CoffesPage />
           </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
