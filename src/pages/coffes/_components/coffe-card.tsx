@@ -34,7 +34,7 @@ export default function CoffeCard({
       aria-label={`${coffee.title} details`}
       {...rest}
       className={cn(
-        "group cursor-pointer relative overflow-hidden rounded-2xl bg-surface-700 border border-surface-600/40 hover:shadow-lg transition-shadow focus:outline-none",
+        "group cursor-pointer relative overflow-hidden rounded-2xl bg-surface-600 border border-surface-600/40 hover:shadow-lg transition-shadow focus:outline-none",
         className
       )}
       onClick={onClick}
@@ -68,14 +68,12 @@ export default function CoffeCard({
         </div>
       </AspectRatio>
 
-      <CardContent className="p-4">
-        <div className="flex items-start justify-between gap-2">
-          <div className="min-w-0">
-            <h3 className="text-primary font-serif text-lg leading-tight truncate">
-              {coffee.title}
-            </h3>
-            <p className="text-primary/80 text-xs truncate">{coffee.subtitle}</p>
-          </div>
+      <CardContent>
+        <div className="flex flex-col items-start justify-between gap-2 mt-4">
+          <h3 className="text-light font-serif text-sm leading-tight">
+            {coffee.title}
+          </h3>
+          <p className="text-primary/80 text-xs truncate">{coffee.subtitle}</p>
         </div>
       </CardContent>
 

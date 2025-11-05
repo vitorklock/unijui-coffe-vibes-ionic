@@ -25,7 +25,7 @@ const arraify = (cs: Record<string, Coffe>) => {
 };
 
 const TAB_TRIGGER_CLASS =
-  "h-24 rotate-180 [writing-mode:vertical-rl] text-sm font-medium";
+  "h-24 rotate-180 [writing-mode:vertical-rl] text-xs font-medium text-light";
 
 export function CoffesPage() {
   const [open, setOpen] = React.useState(false);
@@ -71,7 +71,7 @@ export function CoffesPage() {
     <IonPage>
       {/* Main scrollable area must live inside IonContent */}
       <IonContent fullscreen>
-        <div className="flex gap-6 h-full">
+        <div className="flex gap-6 h-full bg-surface-700">
 
           {/* Category picker */}
           <Tabs
@@ -80,7 +80,7 @@ export function CoffesPage() {
             onValueChange={(v) => setSelectedCategory(v || null)}
             defaultValue=""
           >
-            <TabsList className="flex flex-col h-full w-8 border-r border-border rounded-none rounded-tr-lg">
+            <TabsList className="flex flex-col h-full w-8 border-r border-border rounded-none rounded-tr-4xl">
               <TabsTrigger className={TAB_TRIGGER_CLASS} value={""}>
                 All
               </TabsTrigger>
@@ -93,7 +93,7 @@ export function CoffesPage() {
           </Tabs>
 
           {/* Grid of coffees */}
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 w-full max-h-full mb-auto overflow-y-auto py-6 pr-6">
+          <div className="grid gap-6 grid-cols-2 lg:grid-cols-4 w-full max-h-full mb-auto overflow-y-auto py-6 pr-6">
             {loading
               ? Array.from({ length: 8 }).map((_, i) => (
                 <CoffeCardSkeleton key={i} />

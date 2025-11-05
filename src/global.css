@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+@import "@fontsource/geist-sans";
+@import "@fontsource/geist-mono";
+
 @plugin "tailwindcss-animate";
 @import "tw-animate-css";
 
@@ -89,7 +92,8 @@
 
 :root {
 
-    --navbar-height: 56px;
+    --font-sans: "Geist Sans", sans-serif;
+    --font-mono: "Geist Mono", monospace;
 
     --cv-neutral: #5D5152;
     --cv-warning: #D3A601;
@@ -178,6 +182,11 @@
     --sidebar-accent-foreground: oklch(0.985 0 0);
     --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.556 0 0);
+}
+
+html, body, * {
+  font-family: var(--font-sans) !important;
+  text-wrap: wrap;
 }
 
 @layer base {

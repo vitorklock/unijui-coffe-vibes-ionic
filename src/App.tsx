@@ -10,7 +10,7 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, grid, square } from 'ionicons/icons';
+import { ellipse, grid, heartOutline, home, notificationsOutline, square } from 'ionicons/icons';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
 
@@ -20,7 +20,7 @@ import '@ionic/react/css/core.css';
 /* Basic CSS for apps built with Ionic */
 // import '@ionic/react/css/normalize.css';
 import '@ionic/react/css/structure.css';
-import '@ionic/react/css/typography.css';
+// import '@ionic/react/css/typography.css';
 
 /* Optional CSS utils that can be commented out */
 import '@ionic/react/css/padding.css';
@@ -67,20 +67,26 @@ const App: React.FC = () => (
           </Route>
         </IonRouterOutlet>
 
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="coffes" href="/coffes">
-            <IonIcon aria-hidden="true" icon={grid} />
-            <IonLabel>Coffes</IonLabel>
+        <IonTabBar slot="bottom" className="lower-sidebar bg-surface-700">
+          <IonTabButton
+            className="bg-transparent"
+            tab="home"
+            href="/coffes"
+          >
+            <IonIcon icon={home} />
           </IonTabButton>
-
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon aria-hidden="true" icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
+          <IonTabButton
+            className="bg-transparent"
+            tab="favorites"
+            href="/welcome"
+          >
+            <IonIcon icon={heartOutline} />
           </IonTabButton>
-
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon aria-hidden="true" icon={square} />
-            <IonLabel>Tab 3</IonLabel>
+          <IonTabButton
+            className="bg-transparent"
+            tab="alerts"
+          >
+            <IonIcon icon={notificationsOutline} />
           </IonTabButton>
         </IonTabBar>
       </IonTabs>

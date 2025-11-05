@@ -42,7 +42,7 @@ export default function CoffeeDetail({
   return (
     <div
       className={cn(
-        "w-full p-4 flex gap-6",
+        "w-full p-2 flex gap-6",
         className
       )}
     >
@@ -57,7 +57,7 @@ export default function CoffeeDetail({
           <Button
             asChild
             size="icon"
-            variant="secondary"
+            variant="default"
             className="absolute top-3 left-3 z-10 bg-surface-700/70"
           >
             <a href={backHref} onClick={onBack} aria-label="Voltar">
