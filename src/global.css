@@ -184,9 +184,11 @@
     --sidebar-ring: oklch(0.556 0 0);
 }
 
-html, body, * {
-  font-family: var(--font-sans) !important;
-  text-wrap: wrap;
+html,
+body,
+* {
+    font-family: var(--font-sans) !important;
+    text-wrap: wrap;
 }
 
 @layer base {
@@ -236,4 +238,78 @@ html, body, * {
     scrollbar-width: thin;
     scrollbar-color: #605460 #201520;
     /* thumb color | track color */
+}
+
+/* ============== IONIC ============= */
+/* Keep content flush since the bar is docked */
+ion-content {
+    --padding-bottom: 0;
+}
+
+/* Lower sidebar host: docked, no box shadow */
+ion-tab-bar.lower-sidebar {
+    --background: #120C12;
+    /* surface.900 from your palette */
+    --color: #A192A1;
+    /* surface.300 */
+    --color-selected: #EFE3C8;
+    /* primary */
+    --ripple-color: transparent;
+    --border: 0;
+    /* remove default hairline */
+    height: 64px;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Give the “bar” its look on the internal container */
+ion-tab-bar.lower-sidebar::part(container) {
+    background: var(--background);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    /* subtle top stroke */
+    border-top-left-radius: 18px;
+    /* rounded top corners only */
+    border-top-right-radius: 18px;
+    overflow: hidden;
+}
+
+/* Icon-only buttons to match the reference */
+
+ion-tab-bar.lower-sidebar ion-tab-button {
+    overflow: visible;
+    position: relative;
+}
+
+ion-tab-bar.lower-sidebar ion-tab-button .tab-button-text {
+    display: none;
+}
+
+ion-tab-bar.lower-sidebar ion-tab-button::part(native) {
+    min-height: 48px;
+    border-radius: 12px;
+    padding: 10px 14px;
+    background: transparent;
+}
+
+ion-tab-bar.lower-sidebar ion-tab-button ion-icon {
+    font-size: 22px;
+    color: var(--color);
+}
+
+ion-tab-bar.lower-sidebar ion-tab-button.tab-selected ion-icon {
+    color: var(--color-selected);
+
+}
+
+ion-tab-bar.lower-sidebar ion-tab-button.tab-selected::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    opacity: 0.1;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    z-index: -1;
 }
