@@ -49,6 +49,7 @@ import './theme/variables.css';
 import { CoffesPage } from './pages/coffes/page';
 import RegisterPage from './pages/register/page';
 import { WelcomePage } from './pages/welcome/page';
+import LoginPage from './pages/login/page';
 
 setupIonicReact();
 
@@ -62,6 +63,7 @@ const App: React.FC = () => (
           <Route exact path="/tab3" component={Tab3} />
           <Route exact path="/coffes" component={CoffesPage} />
           <Route exact path="/register" component={RegisterPage} />
+          <Route exact path="/login" component={LoginPage} />
           <Route exact path="/">
             <Redirect to="/welcome" />
           </Route>
