@@ -48,7 +48,7 @@ import '@ionic/react/css/palettes/dark.system.css';
 import './theme/variables.css';
 import { CoffesPage } from './pages/coffes/page';
 import RegisterPage from './pages/register/page';
-import { WelcomePage } from './pages/welcome/welcome';
+import { WelcomePage } from './pages/welcome/page';
 
 setupIonicReact();
 
