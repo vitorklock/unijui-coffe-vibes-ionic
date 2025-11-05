@@ -51,7 +51,7 @@ export default function CoffeeDetail({
         <div
           className={cn(
             "relative w-full overflow-hidden transition-[height] duration-300 ease-in-out",
-            recipeOpen ? 'h-[80px]': 'h-[260px]'
+            recipeOpen ? 'h-[120px]': 'h-[260px]'
           )}
         >
           <Button

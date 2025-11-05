@@ -44,14 +44,8 @@ export default function LoginPage() {
 
   return (
     <IonPage>
-      <IonHeader translucent>
-        <IonToolbar>
-          <IonTitle>Login</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-
-      <IonContent fullscreen className="bg-gradient-to-br from-surface-800 to-surface-400">
-        <div className="min-h-screen flex items-center justify-center">
+      <IonContent fullscreen>
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-surface-800 to-surface-400">
           <div className="bg-surface-900 rounded-3xl shadow-2xl w-full max-w-sm p-8 flex flex-col items-center">
             {/* Logo */}
             <div className="mb-10 text-center">
