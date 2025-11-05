@@ -11,6 +11,15 @@ import { Coffe, COFFE_CATEGORIES } from "@/entities/coffe";
 import CoffeCardSkeleton from "./_components/coffe-skeletons";
 import { getCoffees } from "@/actions/get-coffes";
 
+// ✅ Ionic page primitives
+import {
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+} from "@ionic/react";
+
 const arraify = (cs: Record<string, Coffe>) => {
   return Object.entries(cs).map(([key, c]) => ({ key, ...c }));
 };
@@ -59,76 +68,80 @@ export function CoffesPage() {
   const coffee = selectedCoffe && recipesMap ? recipesMap[selectedCoffe] : null;
 
   return (
-    <div className="flex gap-6 h-full">
+    <IonPage>
+      {/* Main scrollable area must live inside IonContent */}
+      <IonContent fullscreen>
+        <div className="flex gap-6 h-full">
 
-      {/* Category picker */}
-      <Tabs
-        orientation="vertical"
-        className="flex mt-20"
-        onValueChange={(v) => setSelectedCategory(v || null)}
-        defaultValue=""
-      >
-        <TabsList className="flex flex-col h-full w-8 border-r border-border">
-          <TabsTrigger
-            className={TAB_TRIGGER_CLASS}
-            value={""}
+          {/* Category picker */}
+          <Tabs
+            orientation="vertical"
+            className="flex mt-20"
+            onValueChange={(v) => setSelectedCategory(v || null)}
+            defaultValue=""
           >
-            All
-          </TabsTrigger>
-          {COFFE_CATEGORIES.map((c) => (
-            <TabsTrigger key={c} value={c} className={TAB_TRIGGER_CLASS}>
-              {c}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-      </Tabs>
+            <TabsList className="flex flex-col h-full w-8 border-r border-border rounded-none rounded-tr-lg">
+              <TabsTrigger className={TAB_TRIGGER_CLASS} value={""}>
+                All
+              </TabsTrigger>
+              {COFFE_CATEGORIES.map((c) => (
+                <TabsTrigger key={c} value={c} className={TAB_TRIGGER_CLASS}>
+                  {c}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </Tabs>
 
-      {/* Grid of coffees */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 w-full max-h-full mb-auto overflow-y-auto">
-        {loading
-          ? Array.from({ length: 8 }).map((_, i) => <CoffeCardSkeleton key={i} />)
-          : coffes.map((c, i) => (
-            <CoffeCard
-              key={`${c.key}-${i}`}
-              coffee={c}
-              onClick={() => {
-                setSelectedCoffe(c.key);
-                setOpen(true);
-              }}
-            />
-          ))}
-      </div>
+          {/* Grid of coffees */}
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 w-full max-h-full mb-auto overflow-y-auto py-6 pr-6">
+            {loading
+              ? Array.from({ length: 8 }).map((_, i) => (
+                <CoffeCardSkeleton key={i} />
+              ))
+              : coffes.map((c, i) => (
+                <CoffeCard
+                  key={`${c.key}-${i}`}
+                  coffee={c}
+                  onClick={() => {
+                    setSelectedCoffe(c.key);
+                    setOpen(true);
+                  }}
+                />
+              ))}
+          </div>
 
-      {/* Modal with CoffeeDetail */}
-      <Dialog
-        open={open}
-        onOpenChange={(next) => {
-          if (!next) {
-            setOpen(false);
-            setTimeout(() => setSelectedCoffe(null), 150);
-          } else {
-            setOpen(true);
-          }
-        }}
-      >
-        <DialogContent
-          className={cn(
-            "p-0 gap-0 border-none bg-transparent shadow-none w-full max-w-[80%]"
-          )}
-        >
-          {coffee ? (
-            <CoffeeDetail
-              coffee={coffee}
-              className="w-full"
-              backHref="/coffes"
-              onBack={() => {
-                setSelectedCoffe(null);
+          {/* Modal with CoffeeDetail */}
+          <Dialog
+            open={open}
+            onOpenChange={(next) => {
+              if (!next) {
                 setOpen(false);
-              }}
-            />
-          ) : null}
-        </DialogContent>
-      </Dialog>
-    </div>
+                setTimeout(() => setSelectedCoffe(null), 150);
+              } else {
+                setOpen(true);
+              }
+            }}
+          >
+            <DialogContent
+              className={cn(
+                "p-0 gap-0 border-none bg-transparent shadow-none w-full max-w-[calc(100%-20px)]  max-h-[calc(100%-20px)]"
+              )}
+            >
+              {coffee ? (
+                <CoffeeDetail
+                  coffee={coffee}
+                  className="w-full"
+                  backHref="/coffes"
+                  onBack={() => {
+                    setSelectedCoffe(null);
+                    setOpen(false);
+                  }}
+                />
+              ) : null}
+            </DialogContent>
+          </Dialog>
+        </div>
+      </IonContent>
+    </IonPage>
   );
 }

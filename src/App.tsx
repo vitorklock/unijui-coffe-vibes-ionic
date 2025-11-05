@@ -10,7 +10,7 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
+import { ellipse, grid, square } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
@@ -52,32 +52,30 @@ import { CoffesPage } from './pages/coffes/page';
 setupIonicReact();
 
 const App: React.FC = () => (
-  <IonApp className='dark'>
+  <IonApp className="dark">
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path="/tab1">
-            <Tab1 />
-          </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
-          </Route>
-          <Route path="/tab3">
-            <Tab3 />
-          </Route>
-          <Route path="/coffes">
-            <CoffesPage />
+          <Route exact path="/tab1" component={Tab1} />
+          <Route exact path="/tab2" component={Tab2} />
+          <Route exact path="/tab3" component={Tab3} />
+          <Route exact path="/coffes" component={CoffesPage} />
+          <Route exact path="/">
+            <Redirect to="/coffes" />
           </Route>
         </IonRouterOutlet>
+
         <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon aria-hidden="true" icon={triangle} />
-            <IonLabel>Tab 1</IonLabel>
+          <IonTabButton tab="coffes" href="/coffes">
+            <IonIcon aria-hidden="true" icon={grid} />
+            <IonLabel>Coffes</IonLabel>
           </IonTabButton>
+
           <IonTabButton tab="tab2" href="/tab2">
             <IonIcon aria-hidden="true" icon={ellipse} />
             <IonLabel>Tab 2</IonLabel>
           </IonTabButton>
+
           <IonTabButton tab="tab3" href="/tab3">
             <IonIcon aria-hidden="true" icon={square} />
             <IonLabel>Tab 3</IonLabel>

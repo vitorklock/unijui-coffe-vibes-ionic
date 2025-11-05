@@ -49,7 +49,10 @@ export default function CoffeeDetail({
       <Card className="w-full max-w-md mx-auto overflow-hidden rounded-3xl bg-surface-700 border border-surface-600/40 shadow-2xl">
         {/* Hero image (shrinks when recipe opens) */}
         <div
-          className="relative w-full overflow-hidden transition-[height] duration-300 ease-in-out h-[260px]"
+          className={cn(
+            "relative w-full overflow-hidden transition-[height] duration-300 ease-in-out",
+            recipeOpen ? 'h-[80px]': 'h-[260px]'
+          )}
         >
           <Button
             asChild
@@ -65,7 +68,7 @@ export default function CoffeeDetail({
           <img src={coffee.image} alt={coffee.title} className="w-full h-full object-cover" />
         </div>
 
-        <CardContent className="p-6">
+        <CardContent className="p-6 relative">
           {/* Title row */}
           <div className="flex items-start justify-between">
             <div>
@@ -124,27 +127,27 @@ export default function CoffeeDetail({
                 );
               })}
             </div>
+            {/* Recipe (scrollable) */}
+            {recipeOpen && (
+              <div className="mt-6 bg-primary text-surface-700 rounded-xl shadow-md flex-grow">
+                <div className="p-4">
+                  <h3 className="text-lg font-bold mb-2">
+                    {coffee.title} with {selectedMilk}
+                  </h3>
+                </div>
+
+                <ScrollArea className="max-h-72">
+                  <ol className="list-decimal list-inside space-y-2 text-sm px-4 pb-4 pr-6">
+                    {coffee.recipe.map((step, idx) => (
+                      <li key={idx}>{step.replace(/milk/gi, selectedMilk!)}</li>
+                    ))}
+                  </ol>
+                </ScrollArea>
+              </div>
+            )}
           </div>
         </CardContent>
       </Card>
-      {/* Recipe (scrollable) */}
-      {recipeOpen && (
-        <div className="mt-6 bg-primary text-surface-700 rounded-xl shadow-md flex-grow">
-          <div className="p-4">
-            <h3 className="text-lg font-bold mb-2">
-              {coffee.title} with {selectedMilk}
-            </h3>
-          </div>
-
-          <ScrollArea className="max-h-72">
-            <ol className="list-decimal list-inside space-y-2 text-sm px-4 pb-4 pr-6">
-              {coffee.recipe.map((step, idx) => (
-                <li key={idx}>{step.replace(/milk/gi, selectedMilk!)}</li>
-              ))}
-            </ol>
-          </ScrollArea>
-        </div>
-      )}
     </div>
   );
 }
