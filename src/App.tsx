@@ -11,7 +11,6 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { ellipse, grid, square } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
 
@@ -48,6 +47,8 @@ import '@ionic/react/css/palettes/dark.system.css';
 /* Theme variables */
 import './theme/variables.css';
 import { CoffesPage } from './pages/coffes/page';
+import RegisterPage from './pages/register/page';
+import { WelcomePage } from './pages/welcome/welcome';
 
 setupIonicReact();
 
@@ -56,12 +57,13 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path="/tab1" component={Tab1} />
+          <Route exact path="/welcome" component={WelcomePage} />
           <Route exact path="/tab2" component={Tab2} />
           <Route exact path="/tab3" component={Tab3} />
           <Route exact path="/coffes" component={CoffesPage} />
+          <Route exact path="/register" component={RegisterPage} />
           <Route exact path="/">
-            <Redirect to="/coffes" />
+            <Redirect to="/welcome" />
           </Route>
         </IonRouterOutlet>
 

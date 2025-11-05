@@ -1,8 +1,8 @@
 import React from 'react';
 import { IonPage, IonContent, IonButton, useIonRouter } from '@ionic/react';
-import './Tab1.css';
+import './welcome.css';
 
-const Tab1: React.FC = () => {
+export const WelcomePage: React.FC = () => {
   const router = useIonRouter(); // Hook pra navegar
 
   return (
@@ -20,7 +20,7 @@ const Tab1: React.FC = () => {
             <IonButton
               expand="block"
               className="btn-primary"
-              onClick={() => router.push('/tab2', 'forward', 'push')}
+              onClick={() => router.push('/register', 'forward', 'push')}
             >
               CREATE ACCOUNT
             </IonButton>
@@ -39,5 +39,3 @@ const Tab1: React.FC = () => {
     </IonPage>
   );
 };
-
-export default Tab1;
