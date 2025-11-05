@@ -19,7 +19,7 @@ import Tab3 from './pages/Tab3';
 import '@ionic/react/css/core.css';
 
 /* Basic CSS for apps built with Ionic */
-import '@ionic/react/css/normalize.css';
+// import '@ionic/react/css/normalize.css';
 import '@ionic/react/css/structure.css';
 import '@ionic/react/css/typography.css';
 
@@ -32,7 +32,7 @@ import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
 /* Tailwind CSS */
-import './index.css';
+import './global.css';
 
 /**
  * Ionic Dark Mode
@@ -51,7 +51,7 @@ import './theme/variables.css';
 setupIonicReact();
 
 const App: React.FC = () => (
-  <IonApp>
+  <IonApp className='dark'>
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
